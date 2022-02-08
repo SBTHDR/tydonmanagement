@@ -1,7 +1,10 @@
 <template>
-  <div>
-      <div class="card">
-          <div class="card-header">Manage Users</div>
+    <div>
+        <div class="card" v-if="active.dashboard">
+            <div class="card-header d-flex justify-content-between">
+                <span>Manage Users</span>
+                <button class="btn btn-outline-primary btn-sm" @click="setActive('createUser')"><i class="fas fa-plus"></i> Create User</button>
+            </div>
 
             <div class="card-body">
                 <Paginator v-if="results !== null" v-bind:results="results" v-on:get-page="getPage"></Paginator>
@@ -30,19 +33,26 @@
                         </tr>
                         
                     </tbody>
-                    </table>
+                </table>
             </div>
-      </div>
-  </div>
+        </div>
+
+        <CreateUser v-if="active.createUser" v-on:view-dashboard="setActive('dashboard')">
+            
+        </CreateUser>
+
+    </div>
 </template>
 
 <script>
 import Paginator from '../utilities/pagination/Paginator.vue'
+import CreateUser from './CreateUser.vue'
 import axios from 'axios'
 
 export default {
     components: {
-        Paginator
+        Paginator,
+        CreateUser
     },
     mounted() {
         this.getUsers()
@@ -50,6 +60,10 @@ export default {
     data() {
         return {
             results: null,
+            active: {
+                dashboard: true,
+                createUser: false,
+            },
             params: {
                 page: 1
             }
@@ -64,6 +78,10 @@ export default {
         getPage(event) {
             this.params.page = event
             this.getUsers()
+        },
+        setActive(component) {
+            Object.keys(this.active).forEach(key => this.active[key] = false)
+            this.active[component] = true
         }
     }
 }
