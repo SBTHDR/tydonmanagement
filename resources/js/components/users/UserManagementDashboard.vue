@@ -4,6 +4,8 @@
           <div class="card-header">Manage Users</div>
 
             <div class="card-body">
+                <Paginator v-if="results !== null" v-bind:results="results" v-on:get-page="getPage"></Paginator>
+                
                 <table class="table table-bordered border-primary">
                     <thead>
                         <tr>
@@ -35,8 +37,13 @@
 </template>
 
 <script>
+import Paginator from '../utilities/pagination/Paginator.vue'
 import axios from 'axios'
+
 export default {
+    components: {
+        Paginator
+    },
     mounted() {
         this.getUsers()
     },
@@ -53,6 +60,10 @@ export default {
             axios.get('/data/users', { params: this.params }).then(res => {
                     this.results = res.data.results
             })
+        },
+        getPage(event) {
+            this.params.page = event
+            this.getUsers()
         }
     }
 }
