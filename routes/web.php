@@ -26,3 +26,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::prefix('users')->middleware(['web', 'auth'])->group(function() {
     Route::get('/', [UserController::class, 'index'])->name('dashboard');
 });
+
+Route::prefix('data')->middleware(['web', 'auth'])->group(base_path('routes/web/data.php'));
