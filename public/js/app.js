@@ -10676,6 +10676,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
@@ -33453,6 +33455,8 @@ var render = function () {
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(user.email))]),
                     _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(user.user_since))]),
+                    _vm._v(" "),
                     _vm._m(1, true),
                   ])
                 }),
@@ -33476,6 +33480,8 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Email")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("User Since")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Manage")]),
       ]),

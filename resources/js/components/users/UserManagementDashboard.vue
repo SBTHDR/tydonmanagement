@@ -10,6 +10,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
+                            <th scope="col">User Since</th>
                             <th scope="col">Manage</th>
                         </tr>
                     </thead>
@@ -18,6 +19,7 @@
                             <th>{{ user.id }}</th>
                             <td>{{ user.name }}</td>
                             <td>{{ user.email }}</td>
+                            <td>{{ user.user_since }}</td>
                             <td>
                                 <button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button>
                                 <button class="btn btn-secondary btn-sm"><i class="fas fa-edit"></i></button>
